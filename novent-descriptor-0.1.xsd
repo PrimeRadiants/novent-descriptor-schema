@@ -233,22 +233,43 @@
 											</xsd:complexType>
 											
 										</xsd:element>
-										<xsd:element name="play" type="recursiveEvent" maxOccurs="unbounded">
-											<xsd:attribute name="target" use="required" type="xsd:string"></xsd:attribute>
-											<xsd:attribute name="loop">
-												<xsd:simpleType>
-													<xsd:restriction base="xsd:string">
-														<xsd:enumeration value="loop"/>
-														<xsd:enumeration value="stop"/>
-														<xsd:enumeration value="remove"/>
-													</xsd:restriction>
-												</xsd:simpleType>
-											</xsd:attribute>
+										<xsd:element name="play" maxOccurs="unbounded">
+											<xsd:complexType>
+												<xsd:complexContent>
+													<xsd:extension base="recursiveEvent">
+														<xsd:attribute name="target" use="required" type="xsd:string"></xsd:attribute>
+														<xsd:attribute name="loop">
+															<xsd:simpleType>
+																<xsd:restriction base="xsd:string">
+																	<xsd:enumeration value="loop"/>
+																	<xsd:enumeration value="stop"/>
+																	<xsd:enumeration value="remove"/>
+																</xsd:restriction>
+															</xsd:simpleType>
+														</xsd:attribute>
+													</xsd:extension>
+												</xsd:complexContent>
+											</xsd:complexType>
 										</xsd:element>
-										<xsd:element name="wait" type="recursiveEvent" maxOccurs="unbounded">
-											<xsd:attribute name="duration" use="required" type="xsd:positiveInteger"></xsd:attribute>
+										<xsd:element name="wait" maxOccurs="unbounded">
+											<xsd:complexType>
+												<xsd:complexContent>
+													<xsd:extension base="recursiveEvent">
+														<xsd:attribute name="duration" use="required" type="xsd:positiveInteger"></xsd:attribute>
+													</xsd:extension>
+												</xsd:complexContent>
+											</xsd:complexType>
 										</xsd:element>
-										<xsd:element name="stop" type="recursiveEvent" maxOccurs="unbounded"></xsd:element>
+										<xsd:element name="stop" maxOccurs="unbounded">
+											<xsd:complexType>
+												<xsd:complexContent>
+													<xsd:extension base="recursiveEvent">
+														<xsd:attribute name="target" use="required" type="xsd:string"></xsd:attribute>
+														<xsd:attribute name="wait" type="xsd:boolean"></xsd:attribute>
+													</xsd:extension>
+												</xsd:complexContent>
+											</xsd:complexType>
+										</xsd:element>
 									</xsd:choice>
 								</xsd:complexType>
 							</xsd:element>
@@ -337,22 +358,43 @@
 					</xsd:complexContent>
 				</xsd:complexType>
 			</xsd:element>
-			<xsd:element name="play" type="recursiveEvent" maxOccurs="unbounded">
-				<xsd:attribute name="target" use="required" type="xsd:string"></xsd:attribute>
-				<xsd:attribute name="loop">
-					<xsd:simpleType>
-						<xsd:restriction base="xsd:string">
-							<xsd:enumeration value="loop"/>
-							<xsd:enumeration value="stop"/>
-							<xsd:enumeration value="remove"/>
-						</xsd:restriction>
-					</xsd:simpleType>
-				</xsd:attribute>
+			<xsd:element name="play" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="recursiveEvent">
+							<xsd:attribute name="target" use="required" type="xsd:string"></xsd:attribute>
+							<xsd:attribute name="loop">
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:string">
+										<xsd:enumeration value="loop"/>
+										<xsd:enumeration value="stop"/>
+										<xsd:enumeration value="remove"/>
+									</xsd:restriction>
+								</xsd:simpleType>
+							</xsd:attribute>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
 			</xsd:element>
-			<xsd:element name="wait" type="recursiveEvent" maxOccurs="unbounded">
-				<xsd:attribute name="duration" use="required" type="xsd:positiveInteger"></xsd:attribute>
+			<xsd:element name="wait" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="recursiveEvent">
+							<xsd:attribute name="duration" use="required" type="xsd:positiveInteger"></xsd:attribute>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
 			</xsd:element>
-			<xsd:element name="stop" type="recursiveEvent" maxOccurs="unbounded"></xsd:element>
+			<xsd:element name="stop" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="recursiveEvent">
+							<xsd:attribute name="target" use="required" type="xsd:string"></xsd:attribute>
+							<xsd:attribute name="wait" type="xsd:boolean"></xsd:attribute>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
 		</xsd:choice>
 	</xsd:complexType>
 	<xsd:complexType name="unemptyNoventText">
