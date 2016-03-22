@@ -36,7 +36,15 @@
 					<xsd:complexType>
 						<xsd:sequence>
 							<xsd:element name="materials" minOccurs="1" maxOccurs="1">
-								
+								<xsd:complexType>
+									<xsd:choice maxOccurs="unbounded">
+									   <xsd:element name="image" maxOccurs="unbounded"></xsd:element>
+									   <xsd:element name="animation" maxOccurs="unbounded"></xsd:element>
+									   <xsd:element name="video" maxOccurs="unbounded"></xsd:element>
+									   <xsd:element name="sound" maxOccurs="unbounded"></xsd:element>
+									   <xsd:element name="text" maxOccurs="unbounded"></xsd:element>
+									</xsd:choice>
+								</xsd:complexType>
 							</xsd:element>
 							<xsd:element name="event" minOccurs="1" maxOccurs="unbounded">
 							
