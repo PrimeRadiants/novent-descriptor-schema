@@ -139,7 +139,26 @@
 												<xsd:attribute name="y" type="xsd:integer"></xsd:attribute>
 											</xsd:complexType>
 									   </xsd:element>
-									   <xsd:element name="sound" maxOccurs="unbounded"></xsd:element>
+									   <xsd:element name="sound" maxOccurs="unbounded">
+											<xsd:complexType>
+												<xsd:attribute name="name" use="required" type="xsd:string"></xsd:attribute>
+												<xsd:attribute name="src" use="required">
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:anyURI">
+															<xsd:pattern value=".+\.(mp3)" />
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:attribute>
+												<xsd:attribute name="volume">
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:decimal">
+															<xsd:minInclusive value="0" />
+															<xsd:maxInclusive value="1" />
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:attribute>
+											</xsd:complexType>
+									   </xsd:element>
 									   <xsd:element name="text" maxOccurs="unbounded"></xsd:element>
 									</xsd:choice>
 								</xsd:complexType>
