@@ -162,10 +162,6 @@
 									   <xsd:element name="text" maxOccurs="unbounded" type="unemptyNoventText"></xsd:element>
 									</xsd:choice>
 								</xsd:complexType>
-								<xsd:unique name="unique-materials-name">
-								  <xsd:selector xpath="image|animation|video|sound|text"/>
-								  <xsd:field xpath="@name"/>
-							   </xsd:unique>
 							</xsd:element>
 							<xsd:element name="event" minOccurs="1" maxOccurs="unbounded">
 								<xsd:complexType>
@@ -235,10 +231,7 @@
 													</xsd:extension>
 												</xsd:complexContent>
 											</xsd:complexType>
-											<xsd:unique name="unique-animate-name">
-											  <xsd:selector xpath=".//animate"/>
-											  <xsd:field xpath="@name"/>
-										   </xsd:unique>
+											
 										</xsd:element>
 										<xsd:element name="play" type="recursiveEvent" maxOccurs="unbounded"></xsd:element>
 										<xsd:element name="wait" type="recursiveEvent" maxOccurs="unbounded"></xsd:element>
@@ -249,6 +242,10 @@
 						</xsd:sequence>
 						<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
 					</xsd:complexType>
+					<xsd:unique name="unique-animate-name">
+					  <xsd:selector xpath=".//animate|.//image|.//animation|.//video|.//sound|.//text"/>
+					  <xsd:field xpath="@name"/>
+				   </xsd:unique>
 				</xsd:element>
 			</xsd:sequence>
 			<xsd:attribute name="height" type="xsd:positiveInteger" use="required"></xsd:attribute>
@@ -327,7 +324,9 @@
 					</xsd:complexContent>
 				</xsd:complexType>
 			</xsd:element>
-			<xsd:element name="play" type="recursiveEvent" maxOccurs="unbounded"></xsd:element>
+			<xsd:element name="play" type="recursiveEvent" maxOccurs="unbounded">
+				
+			</xsd:element>
 			<xsd:element name="wait" type="recursiveEvent" maxOccurs="unbounded"></xsd:element>
 			<xsd:element name="stop" type="recursiveEvent" maxOccurs="unbounded"></xsd:element>
 		</xsd:choice>
