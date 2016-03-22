@@ -47,7 +47,14 @@
 								</xsd:complexType>
 							</xsd:element>
 							<xsd:element name="event" minOccurs="1" maxOccurs="unbounded">
-							
+								<xsd:complexType>
+									<xsd:choice maxOccurs="unbounded">
+										<xsd:element name="end" maxOccurs="1"></xsd:element>
+										<xsd:element name="animate" type="recursiveEvent" maxOccurs="unbounded"></xsd:element>
+										<xsd:element name="play" type="recursiveEvent" maxOccurs="unbounded"></xsd:element>
+										<xsd:element name="wait" type="recursiveEvent" maxOccurs="unbounded"></xsd:element>
+									</xsd:choice>
+								</xsd:complexType>
 							</xsd:element>
 						</xsd:sequence>
 						<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
@@ -62,4 +69,12 @@
 		  <xsd:field xpath="@name"/>
 	   </xsd:unique>
 	</xsd:element>
+	<xsd:complexType name="recursiveEvent">    
+		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="end" maxOccurs="1"></xsd:element>
+			<xsd:element name="animate" type="recursiveEvent" maxOccurs="unbounded"></xsd:element>
+			<xsd:element name="play" type="recursiveEvent" maxOccurs="unbounded"></xsd:element>
+			<xsd:element name="wait" type="recursiveEvent" maxOccurs="unbounded"></xsd:element>
+		</xsd:choice>
+	</xsd:complexType>
 </xsd:schema>
