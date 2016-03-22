@@ -38,13 +38,46 @@
 							<xsd:element name="materials" minOccurs="1" maxOccurs="1">
 								<xsd:complexType>
 									<xsd:choice maxOccurs="unbounded">
-									   <xsd:element name="image" maxOccurs="unbounded"></xsd:element>
+									   <xsd:element name="image" maxOccurs="unbounded">
+											<xsd:complexType>
+												<xsd:attribute name="name" use="required" type="xsd:string"></xsd:attribute>
+												<xsd:attribute name="src" use="required">
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:anyURI">
+															<xsd:pattern value=".+\.(png|jpg|gif)" />
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:attribute>
+												<xsd:attribute name="alpha">
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:decimal">
+															<xsd:minInclusive value="0" />
+															<xsd:maxInclusive value="1" />
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:attribute>
+												<xsd:attribute name="regX" type="xsd:integer"></xsd:attribute>
+												<xsd:attribute name="regY" type="xsd:integer"></xsd:attribute>
+												<xsd:attribute name="rotation" type="xsd:decimal"></xsd:attribute>
+												<xsd:attribute name="scaleX" type="xsd:decimal"></xsd:attribute>
+												<xsd:attribute name="scaleY" type="xsd:decimal"></xsd:attribute>
+												<xsd:attribute name="skewX" type="xsd:decimal"></xsd:attribute>
+												<xsd:attribute name="skewY" type="xsd:decimal"></xsd:attribute>
+												<xsd:attribute name="visible" type="xsd:boolean"></xsd:attribute>
+												<xsd:attribute name="x" type="xsd:integer"></xsd:attribute>
+												<xsd:attribute name="y" type="xsd:integer"></xsd:attribute>
+											</xsd:complexType>
+									   </xsd:element>
 									   <xsd:element name="animation" maxOccurs="unbounded"></xsd:element>
 									   <xsd:element name="video" maxOccurs="unbounded"></xsd:element>
 									   <xsd:element name="sound" maxOccurs="unbounded"></xsd:element>
 									   <xsd:element name="text" maxOccurs="unbounded"></xsd:element>
 									</xsd:choice>
 								</xsd:complexType>
+								<xsd:unique name="unique-materials-name">
+								  <xsd:selector xpath="image|animation|video|sound|text"/>
+								  <xsd:field xpath="@name"/>
+							   </xsd:unique>
 							</xsd:element>
 							<xsd:element name="event" minOccurs="1" maxOccurs="unbounded">
 								<xsd:complexType>
@@ -64,7 +97,7 @@
 			<xsd:attribute name="height" type="xsd:positiveInteger" use="required"></xsd:attribute>
 			<xsd:attribute name="width" type="xsd:positiveInteger" use="required"></xsd:attribute>
 		</xsd:complexType>
-		<xsd:unique name="unique-name">
+		<xsd:unique name="unique-page-name">
 		  <xsd:selector xpath="page"/>
 		  <xsd:field xpath="@name"/>
 	   </xsd:unique>
