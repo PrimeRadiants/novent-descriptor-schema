@@ -109,7 +109,36 @@
 												<xsd:attribute name="y" type="xsd:integer"></xsd:attribute>
 											</xsd:complexType>
 									   </xsd:element>
-									   <xsd:element name="video" maxOccurs="unbounded"></xsd:element>
+									   <xsd:element name="video" maxOccurs="unbounded">
+											<xsd:complexType>
+												<xsd:attribute name="name" use="required" type="xsd:string"></xsd:attribute>
+												<xsd:attribute name="src" use="required">
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:anyURI">
+															<xsd:pattern value=".+\.(mp4)" />
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:attribute>
+												<xsd:attribute name="alpha">
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:decimal">
+															<xsd:minInclusive value="0" />
+															<xsd:maxInclusive value="1" />
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:attribute>
+												<xsd:attribute name="regX" type="xsd:integer"></xsd:attribute>
+												<xsd:attribute name="regY" type="xsd:integer"></xsd:attribute>
+												<xsd:attribute name="rotation" type="xsd:decimal"></xsd:attribute>
+												<xsd:attribute name="scaleX" type="xsd:decimal"></xsd:attribute>
+												<xsd:attribute name="scaleY" type="xsd:decimal"></xsd:attribute>
+												<xsd:attribute name="skewX" type="xsd:decimal"></xsd:attribute>
+												<xsd:attribute name="skewY" type="xsd:decimal"></xsd:attribute>
+												<xsd:attribute name="visible" type="xsd:boolean"></xsd:attribute>
+												<xsd:attribute name="x" type="xsd:integer"></xsd:attribute>
+												<xsd:attribute name="y" type="xsd:integer"></xsd:attribute>
+											</xsd:complexType>
+									   </xsd:element>
 									   <xsd:element name="sound" maxOccurs="unbounded"></xsd:element>
 									   <xsd:element name="text" maxOccurs="unbounded"></xsd:element>
 									</xsd:choice>
