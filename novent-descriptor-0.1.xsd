@@ -32,10 +32,26 @@
 						<xsd:attribute name="y" type="xsd:integer"></xsd:attribute>
 					</xsd:complexType>
 				</xsd:element>
-				<xsd:element name="page" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+				<xsd:element name="page" minOccurs="1" maxOccurs="unbounded">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="materials" minOccurs="1" maxOccurs="1">
+								
+							</xsd:element>
+							<xsd:element name="event" minOccurs="1" maxOccurs="unbounded">
+							
+							</xsd:element>
+						</xsd:sequence>
+						<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+					</xsd:complexType>
+				</xsd:element>
 			</xsd:sequence>
 			<xsd:attribute name="height" type="xsd:positiveInteger" use="required"></xsd:attribute>
 			<xsd:attribute name="width" type="xsd:positiveInteger" use="required"></xsd:attribute>
 		</xsd:complexType>
+		<xsd:unique name="unique-name">
+		  <xsd:selector xpath="page"/>
+		  <xsd:field xpath="@name"/>
+	   </xsd:unique>
 	</xsd:element>
 </xsd:schema>
