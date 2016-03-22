@@ -1,4 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-
+	<xsd:element name="novent">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="button" minOccurs="1" maxOccurs="1">
+					<xsd:complexType>
+						<xsd:attribute name="src" use="required">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:anyURI">
+									<xsd:pattern value=".+\.(png|jpg|gif)" />
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:attribute>
+						<xsd:attribute name="alpha">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:decimal">
+									<xsd:minInclusive value="0" />
+									<xsd:maxInclusive value="1" />
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:attribute>
+						<xsd:attribute name="regX" type="xsd:integer"></xsd:attribute>
+						<xsd:attribute name="regY" type="xsd:integer"></xsd:attribute>
+						<xsd:attribute name="rotation" type="xsd:decimal"></xsd:attribute>
+						<xsd:attribute name="scaleX" type="xsd:decimal"></xsd:attribute>
+						<xsd:attribute name="scaleY" type="xsd:decimal"></xsd:attribute>
+						<xsd:attribute name="skewX" type="xsd:decimal"></xsd:attribute>
+						<xsd:attribute name="skewY" type="xsd:decimal"></xsd:attribute>
+						<xsd:attribute name="visible" type="xsd:boolean"></xsd:attribute>
+						<xsd:attribute name="x" type="xsd:integer"></xsd:attribute>
+						<xsd:attribute name="y" type="xsd:integer"></xsd:attribute>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="page" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="height" type="xsd:positiveInteger" use="required"></xsd:attribute>
+			<xsd:attribute name="width" type="xsd:positiveInteger" use="required"></xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
 </xsd:schema>
