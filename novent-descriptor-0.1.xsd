@@ -81,11 +81,11 @@
 												<xsd:attribute name="height" use="required" type="xsd:positiveInteger"></xsd:attribute>
 												<xsd:attribute name="width" use="required" type="xsd:positiveInteger"></xsd:attribute>
 												<xsd:attribute name="frames" use="required" type="xsd:positiveInteger"></xsd:attribute>
-												<xsd:attribute name="framerate" use="required">
+												<xsd:attribute name="framerate">
 													<xsd:simpleType>
 														<xsd:restriction base="xsd:integer">
 															<xsd:minInclusive value="1" />
-															<xsd:maxInclusive value="60" />
+															<xsd:maxInclusive value="30" />
 														</xsd:restriction>
 													</xsd:simpleType>
 												</xsd:attribute>
@@ -159,7 +159,7 @@
 												</xsd:attribute>
 											</xsd:complexType>
 									   </xsd:element>
-									   <xsd:element name="text" maxOccurs="unbounded"></xsd:element>
+									   <xsd:element name="text" maxOccurs="unbounded" type="unemptyNoventText"></xsd:element>
 									</xsd:choice>
 								</xsd:complexType>
 								<xsd:unique name="unique-materials-name">
@@ -197,5 +197,55 @@
 			<xsd:element name="play" type="recursiveEvent" maxOccurs="unbounded"></xsd:element>
 			<xsd:element name="wait" type="recursiveEvent" maxOccurs="unbounded"></xsd:element>
 		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="unemptyNoventText">
+        <xsd:simpleContent>
+            <xsd:restriction base="noventText">
+                <xsd:minLength value="1"/>
+            </xsd:restriction>
+        </xsd:simpleContent>
+    </xsd:complexType>
+	<xsd:complexType name="noventText">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="name" use="required" type="xsd:string"></xsd:attribute>
+				<xsd:attribute name="font" use="required" type="xsd:string"></xsd:attribute>
+				<xsd:attribute name="size" use="required">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:pattern value="[0-9]+(px|em|pt)" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:attribute>
+				<xsd:attribute name="width" use="required" type="xsd:positiveInteger"></xsd:attribute>
+				<xsd:attribute name="align">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:pattern value="(left|center|right|justify)" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:attribute>
+				<xsd:attribute name="lineHeight" type="xsd:positiveInteger"></xsd:attribute>
+				<xsd:attribute name="color" type="xsd:string"></xsd:attribute>
+				<xsd:attribute name="alpha">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:decimal">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="1" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:attribute>
+				<xsd:attribute name="regX" type="xsd:integer"></xsd:attribute>
+				<xsd:attribute name="regY" type="xsd:integer"></xsd:attribute>
+				<xsd:attribute name="rotation" type="xsd:decimal"></xsd:attribute>
+				<xsd:attribute name="scaleX" type="xsd:decimal"></xsd:attribute>
+				<xsd:attribute name="scaleY" type="xsd:decimal"></xsd:attribute>
+				<xsd:attribute name="skewX" type="xsd:decimal"></xsd:attribute>
+				<xsd:attribute name="skewY" type="xsd:decimal"></xsd:attribute>
+				<xsd:attribute name="visible" type="xsd:boolean"></xsd:attribute>
+				<xsd:attribute name="x" type="xsd:integer"></xsd:attribute>
+				<xsd:attribute name="y" type="xsd:integer"></xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
 	</xsd:complexType>
 </xsd:schema>
