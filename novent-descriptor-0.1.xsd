@@ -40,7 +40,7 @@
 									<xsd:choice maxOccurs="unbounded">
 									   <xsd:element name="image" maxOccurs="unbounded">
 											<xsd:complexType>
-												<xsd:attribute name="name" use="required" type="xsd:string"></xsd:attribute>
+												<xsd:attribute name="name" use="required" type="NonEmptyString"></xsd:attribute>
 												<xsd:attribute name="src" use="required">
 													<xsd:simpleType>
 														<xsd:restriction base="xsd:anyURI">
@@ -70,7 +70,7 @@
 									   </xsd:element>
 									   <xsd:element name="animation" maxOccurs="unbounded">
 											<xsd:complexType>
-												<xsd:attribute name="name" use="required" type="xsd:string"></xsd:attribute>
+												<xsd:attribute name="name" use="required" type="NonEmptyString"></xsd:attribute>
 												<xsd:attribute name="src" use="required">
 													<xsd:simpleType>
 														<xsd:restriction base="xsd:anyURI">
@@ -111,7 +111,7 @@
 									   </xsd:element>
 									   <xsd:element name="video" maxOccurs="unbounded">
 											<xsd:complexType>
-												<xsd:attribute name="name" use="required" type="xsd:string"></xsd:attribute>
+												<xsd:attribute name="name" use="required" type="NonEmptyString"></xsd:attribute>
 												<xsd:attribute name="src" use="required">
 													<xsd:simpleType>
 														<xsd:restriction base="xsd:anyURI">
@@ -141,7 +141,7 @@
 									   </xsd:element>
 									   <xsd:element name="sound" maxOccurs="unbounded">
 											<xsd:complexType>
-												<xsd:attribute name="name" use="required" type="xsd:string"></xsd:attribute>
+												<xsd:attribute name="name" use="required" type="NonEmptyString"></xsd:attribute>
 												<xsd:attribute name="src" use="required">
 													<xsd:simpleType>
 														<xsd:restriction base="xsd:anyURI">
@@ -171,7 +171,7 @@
 											<xsd:complexType>
 												<xsd:complexContent>
 													<xsd:extension base="recursiveEvent">
-														<xsd:attribute name="target" use="required" type="xsd:string"></xsd:attribute>
+														<xsd:attribute name="target" use="required" type="NonEmptyString"></xsd:attribute>
 														<xsd:attribute name="property" use="required">
 															<xsd:simpleType>
 																<xsd:restriction base="xsd:string">
@@ -232,8 +232,8 @@
 										</xsd:element>
 										<xsd:element name="wiggle" maxOccurs="unbounded">
 											<xsd:complexType>
-												<xsd:attribute name="name" use="required" type="xsd:string"></xsd:attribute>
-												<xsd:attribute name="target" use="required" type="xsd:string"></xsd:attribute>
+												<xsd:attribute name="name" use="required" type="NonEmptyString"></xsd:attribute>
+												<xsd:attribute name="target" use="required" type="NonEmptyString"></xsd:attribute>
 												<xsd:attribute name="property" use="required">
 													<xsd:simpleType>
 														<xsd:restriction base="xsd:string">
@@ -293,7 +293,7 @@
 											<xsd:complexType>
 												<xsd:complexContent>
 													<xsd:extension base="recursiveEvent">
-														<xsd:attribute name="target" use="required" type="xsd:string"></xsd:attribute>
+														<xsd:attribute name="target" use="required" type="NonEmptyString"></xsd:attribute>
 														<xsd:attribute name="loop">
 															<xsd:simpleType>
 																<xsd:restriction base="xsd:string">
@@ -320,8 +320,7 @@
 											<xsd:complexType>
 												<xsd:complexContent>
 													<xsd:extension base="recursiveEvent">
-														<xsd:attribute name="target" use="required" type="xsd:string"></xsd:attribute>
-														<xsd:attribute name="wait" type="xsd:boolean"></xsd:attribute>
+														<xsd:attribute name="target" use="required" type="NonEmptyString"></xsd:attribute>
 													</xsd:extension>
 												</xsd:complexContent>
 											</xsd:complexType>
@@ -330,7 +329,7 @@
 								</xsd:complexType>
 							</xsd:element>
 						</xsd:sequence>
-						<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+						<xsd:attribute name="name" type="NonEmptyString" use="required"></xsd:attribute>
 					</xsd:complexType>
 					<xsd:unique name="unique-animate-name">
 					  <xsd:selector xpath=".//animate|.//image|.//animation|.//video|.//sound|.//text"/>
@@ -353,7 +352,7 @@
 				<xsd:complexType>
 					<xsd:complexContent>
 						<xsd:extension base="recursiveEvent">
-							<xsd:attribute name="target" use="required" type="xsd:string"></xsd:attribute>
+							<xsd:attribute name="target" use="required" type="NonEmptyString"></xsd:attribute>
 							<xsd:attribute name="property" use="required">
 								<xsd:simpleType>
 									<xsd:restriction base="xsd:string">
@@ -413,8 +412,8 @@
 			</xsd:element>
 			<xsd:element name="wiggle" maxOccurs="unbounded">
 				<xsd:complexType>
-					<xsd:attribute name="name" use="required" type="xsd:string"></xsd:attribute>
-					<xsd:attribute name="target" use="required" type="xsd:string"></xsd:attribute>
+					<xsd:attribute name="name" use="required" type="NonEmptyString"></xsd:attribute>
+					<xsd:attribute name="target" use="required" type="NonEmptyString"></xsd:attribute>
 					<xsd:attribute name="property" use="required">
 						<xsd:simpleType>
 							<xsd:restriction base="xsd:string">
@@ -474,7 +473,7 @@
 				<xsd:complexType>
 					<xsd:complexContent>
 						<xsd:extension base="recursiveEvent">
-							<xsd:attribute name="target" use="required" type="xsd:string"></xsd:attribute>
+							<xsd:attribute name="target" use="required" type="NonEmptyString"></xsd:attribute>
 							<xsd:attribute name="loop">
 								<xsd:simpleType>
 									<xsd:restriction base="xsd:string">
@@ -501,8 +500,7 @@
 				<xsd:complexType>
 					<xsd:complexContent>
 						<xsd:extension base="recursiveEvent">
-							<xsd:attribute name="target" use="required" type="xsd:string"></xsd:attribute>
-							<xsd:attribute name="wait" type="xsd:boolean"></xsd:attribute>
+							<xsd:attribute name="target" use="required" type="NonEmptyString"></xsd:attribute>
 						</xsd:extension>
 					</xsd:complexContent>
 				</xsd:complexType>
@@ -518,9 +516,9 @@
     </xsd:complexType>
 	<xsd:complexType name="noventText">
 		<xsd:simpleContent>
-			<xsd:extension base="xsd:string">
-				<xsd:attribute name="name" use="required" type="xsd:string"></xsd:attribute>
-				<xsd:attribute name="font" use="required" type="xsd:string"></xsd:attribute>
+			<xsd:extension base="NonEmptyString">
+				<xsd:attribute name="name" use="required" type="NonEmptyString"></xsd:attribute>
+				<xsd:attribute name="font" use="required" type="NonEmptyString"></xsd:attribute>
 				<xsd:attribute name="size" use="required">
 					<xsd:simpleType>
 						<xsd:restriction base="xsd:string">
@@ -540,7 +538,7 @@
 					</xsd:simpleType>
 				</xsd:attribute>
 				<xsd:attribute name="lineHeight" type="xsd:positiveInteger"></xsd:attribute>
-				<xsd:attribute name="color" type="xsd:string"></xsd:attribute>
+				<xsd:attribute name="color" type="NonEmptyString"></xsd:attribute>
 				<xsd:attribute name="alpha">
 					<xsd:simpleType>
 						<xsd:restriction base="xsd:decimal">
@@ -562,4 +560,10 @@
 			</xsd:extension>
 		</xsd:simpleContent>
 	</xsd:complexType>
+	<xsd:simpleType name="NonEmptyString">
+	  <xsd:restriction base="xsd:string">
+		<xsd:minLength value="1" />
+		<xsd:pattern value=".*[^\s].*" />
+	  </xsd:restriction>
+	</xsd:simpleType>
 </xsd:schema>
